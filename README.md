@@ -7,5 +7,6 @@ sudo yum install -y epel-release
 ##### 2. Install Ansible
 ```sh
 sudo yum install -y ansible
+ansible --version
 ```
 ##### 3. 
