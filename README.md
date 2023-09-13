@@ -16,3 +16,8 @@ ansible-config list # view all configuration
 ansible-config dump # show current settings
 ansible-config dump --only-changed # show only non-default settings
 ```
+
+### Search specific host
+```sh
+ansible -i "MyIventory" --list-hosts "NameOfYourHost"
+```
