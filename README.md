@@ -9,4 +9,10 @@ sudo yum install -y epel-release
 sudo yum install -y ansible
 ansible --version
 ```
-##### 3. 
+### View Configuration
+```sh
+ansible-config view # view current file contents
+ansible-config list # view all configuration
+ansible-config dump # show current settings
+ansible-config dump --only-changed # show only non-default settings
+```
