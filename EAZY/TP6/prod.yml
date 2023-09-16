@@ -2,12 +2,12 @@ all:
   vars:
     env: 'production'
 
-worker:
+prod:
   hosts:  
-    ansible-worker1:
-      ansible_host: ansible-worker1
+    client1:
+      ansible_host: 192.168.99.171
 
 master:
   hosts:
-    ansible-master:
-      ansible_host: ansible-master
+    master:
+      ansible_host: 192.168.99.170

@@ -1,7 +1,7 @@
 ---
 
-- name : "Installation de Docker sur les workers"
-  hosts: worker
+- name : Installing Docker on workers
+  hosts: prod
   become: yes
   gather_facts: yes
   vars_files:
@@ -12,16 +12,16 @@
       pip:
         name: docker-py
   tasks:
-    - name: Installation de docker
+    - name: Installing Docker on worker
       command:
         cmd: "{{ item }}" 
       with_items:
       - curl -fsSL https://get.docker.com -o install-docker.sh
       - sh install-docker.sh
 
-    - name: Add user cool to docker group
+    - name: Add user MyUser to docker group
       user:
-        name: cool
+        name: MyUser
         groups: docker
         append: yes
 
@@ -46,7 +46,7 @@
         ports:
           - "{{ container_port_exposed }}"
         volumes:
-          - /home/cool/index.html:{{dest_folder_container}}/index.html
+          - /home/MyUser/index.html:{{dest_folder_container}}/index.html
 
 
 
