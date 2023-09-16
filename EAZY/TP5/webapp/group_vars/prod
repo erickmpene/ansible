@@ -1,10 +1,10 @@
-ansible_user: cool
-ansible_ssh_private_key_file: '/home/cool/key/jenkins.priv'
+ansible_user: MyUser
+ansible_ssh_private_key_file: '/home/MyUser/key/jenkins.priv'
 ansible_python_interpreter: "/usr/bin/python3"
 container_image: httpd
 container_name: webapp
 container_port_exposed: "80:80"
 public_folder: "/site-internet/."
-src_folder_local_host: "/home/cool/site-internet"
+src_folder_local_host: "/home/MyUser/site-internet"
 dest_folder_remote_host: "/tmp"
 dest_folder_container: "/usr/local/apache2/htdocs/"

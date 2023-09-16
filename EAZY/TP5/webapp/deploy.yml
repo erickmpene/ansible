@@ -5,7 +5,7 @@
   become: yes
   gather_facts: yes
   vars_files:
-    - /home/cool/send/BOOTCAMP/TP5/group_vars/prod
+    - /home/MyUser/send/ansible/EAZY/TP5/webapp/group_vars
 
   pre_tasks:
     - name: INSTALL PYTHON FOR DOCKER
@@ -19,9 +19,9 @@
       - curl -fsSL https://get.docker.com -o install-docker.sh
       - sh install-docker.sh
 
-    - name: Add user cool to docker group
+    - name: Add user MyUser to docker group
       user:
-        name: cool
+        name: MyUser
         groups: docker
         append: yes
 
