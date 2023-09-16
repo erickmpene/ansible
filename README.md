@@ -9,7 +9,7 @@ sudo yum install -y epel-release
 sudo yum install -y ansible
 ansible --version
 ```
-### View Configuration
+#### View Configuration
 ```sh
 ansible-config view # view current file contents
 ansible-config list # view all configuration
@@ -17,7 +17,12 @@ ansible-config dump # show current settings
 ansible-config dump --only-changed # show only non-default settings
 ```
 
-### Search specific host
+#### Search specific host
 ```sh
 ansible -i "MyIventory" --list-hosts "NameOfYourHost"
+```
+#### Check syntax
+If you are on CentOS
+```sh
+sudo yum install ansible-lint
 ```
