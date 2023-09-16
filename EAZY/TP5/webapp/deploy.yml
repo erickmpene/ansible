@@ -1,7 +1,7 @@
 ---
 
-- name : "Installation de Docker sur les workers"
-  hosts: worker
+- name :Installing Docker on workers
+  hosts: prod
   become: yes
   gather_facts: yes
   vars_files:
@@ -12,7 +12,7 @@
       pip:
         name: docker-py
   tasks:
-    - name: Installation de docker
+    - name: Docker installation
       command:
         cmd: "{{ item }}"
       with_items:
@@ -30,9 +30,6 @@
         name: docker
         state: started
         enabled: yes
-    - name: Create volumes
-      community.docker.docker_volume:
-        name: myvolume
 
     - name: DEPLOY CONTAINER
       community.docker.docker_container:
