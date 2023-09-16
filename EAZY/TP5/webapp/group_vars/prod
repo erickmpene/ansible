@@ -1,5 +1,5 @@
 ansible_user: MyUser
-ansible_ssh_private_key_file: '/home/MyUser/key/jenkins.priv'
+ansible_ssh_private_key_file: 'PUT YOUR PUBLIC KEY HERE !!!'
 ansible_python_interpreter: "/usr/bin/python3"
 container_image: httpd
 container_name: webapp
