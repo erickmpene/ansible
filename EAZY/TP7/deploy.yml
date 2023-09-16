@@ -1,0 +1,55 @@
+---
+
+- name : “Installing Docker on workers”
+  hosts: prod
+  become: yes
+  gather_facts: yes
+  vars:
+    ansible_python_interpreter: "/usr/bin/python3"
+  vars_files:
+    - ./group_vars/prod
+    - ./files/secrets/credentials.vault
+
+  pre_tasks:
+    - name: INSTALL PYTHON FOR DOCKER
+      pip:
+        name: docker-py
+  tasks:
+    - name: Installation de docker
+      command:
+        cmd: "{{ item }}" 
+      with_items:
+      - curl -fsSL https://get.docker.com -o install-docker.sh
+      - sh install-docker.sh
+
+    - name: Add user MyUser to docker group
+      user:
+        name: MyUser
+        groups: docker
+        append: yes
+
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Copy websitefile template
+      template:
+        src: index.html.j2
+        dest: "{{ src_folder_local_host }}"
+
+    - name: DEPLOY CONTAINER
+      community.docker.docker_container:
+        name: "{{ container_name }}"
+        image: "{{ container_image }}"
+        restart: true
+        state: started
+        detach: yes
+        ports:
+          - "{{ container_port_exposed }}"
+        volumes:
+          - /home/MyUser/index.html:{{dest_folder_container}}/index.html
+
+
+

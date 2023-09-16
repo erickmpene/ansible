@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heure actuelle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        #heure {
+            font-size: 24px;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>L'heure actuelle est :</h1>
+    <div id="heure">
+        <!-- Le contenu sera rempli par JavaScript -->
+    </div>
+    <script>
+        // Fonction pour mettre à jour l'heure actuelle
+        function mettreAJourHeure() {
+            var date = new Date();
+            var heure = date.getHours();
+            var minutes = date.getMinutes();
+            var secondes = date.getSeconds();
+            var heureActuelle = heure + ":" + (minutes < 10 ? "0" : "") + minutes + ":" + (secondes < 10 ? "0" : "") + secondes;
+            document.getElementById('heure').textContent = heureActuelle;
+        }
+
+        // Mettre à jour l'heure toutes les secondes
+        setInterval(mettreAJourHeure, 1000);
+
+        // Appeler la fonction une première fois pour afficher l'heure dès le chargement de la page
+        mettreAJourHeure();
+    </script>
+</body>
+</html>

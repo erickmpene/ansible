@@ -1,0 +1,8 @@
+ansible_user: MyUser
+ansible_ssh_pass: "{{ vault_ansible_ssh_pass }}"
+ansible_ssh_private_key_file: 'PUT THE PATH OF YOUE PUBLIC KEY'
+container_image: httpd
+container_name: webapp
+container_port_exposed: "80:80"
+src_folder_local_host: "/home/MyUser/index.html"
+dest_folder_container: "/usr/local/apache2/htdocs"
