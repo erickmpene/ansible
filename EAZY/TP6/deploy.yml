@@ -35,7 +35,6 @@
         src: index.html.j2
         dest: "{{ src_folder_local_host }}"
 
-
     - name: DEPLOY CONTAINER
       community.docker.docker_container:
         name: "{{ container_name }}"

@@ -5,5 +5,4 @@ container_image: httpd
 container_name: webapp
 container_port_exposed: "80:80"
 src_folder_local_host: "/home/MyUser/index.html"
-
 dest_folder_container: "/usr/local/apache2/htdocs"
