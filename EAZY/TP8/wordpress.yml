@@ -1,0 +1,18 @@
+---
+- hosts: prod
+  become: true
+  vars:
+
+  vars_files:
+#    - files/secrets/credentials.yml
+  pre_tasks:
+
+    # - name: Include deploy.yml
+    #   include_tasks: deploy.yml
+
+    - name: create www-data
+      user: 
+        name: www-data 
+        state: present
+  roles:
+    - { role: ansible-role-containerized-wordpress }
