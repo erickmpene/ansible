@@ -10,5 +10,5 @@ public_folder: "/site-internet/."
 src_folder_local_host: "/home/cool/index.html"
 dest_folder_remote_host: "/tmp"
 dest_folder_container: "/usr/local/apache2/htdocs/"
-system_user: {{ ansible_suer }}
+system_user: "{{ ansible_suer }}"
 
