@@ -1,0 +1,53 @@
+---
+- name: Apache installation using docker
+  hosts: prod
+  become: true
+  vars_files:
+   - files/secrets/credentials.yml
+  pre_tasks:
+    - name: Install some package
+      package:
+        name: "{{ item }}"
+        state: present
+      when: ansible_distribution == "CentOS"
+      loop:
+        - epel-release
+        - wget
+        - git
+
+    - name: Install docker python
+      pip:
+        name: docker-py
+  tasks:
+    - name: Installation de docker
+      command:
+        cmd: "{{ item }}"
+      with_items:
+      - curl -fsSL https://get.docker.com -o install-docker.sh
+      - sh install-docker.sh
+
+    - name: Add user cool to docker group
+      user:
+        name: cool
+        groups: docker
+        append: yes
+
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Copy website file template
+      template:
+        src: index.html.j2
+        dest: "{{ src_folder_local_host }}"
+
+    - name: Create Apache container
+      docker_container:
+        name: "{{ container_name }}"
+        image: "{{ container_image }}"
+        ports:
+          - "{{ container_port_exposed }}"
+        volumes:
+          - /home/cool/index.html:/usr/local/apache2/htdocs/index.html
