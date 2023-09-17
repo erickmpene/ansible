@@ -1,7 +1,6 @@
 ---
 
-#ansible_password: "{{ vault_ansible_password }}"
-ansible_user: cool
+ansible_user: MyUSer
 ansible_ssh_private_key_file: '/home/cool/key/jenkins.priv'
 ansible_python_interpreter: "/usr/bin/python3"
 container_image: httpd
