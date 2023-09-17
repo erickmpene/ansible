@@ -7,4 +7,4 @@
         name: www-data 
         state: present
   roles:
-    - { role: ansible-role-containerized-wordpress }
+    - { role: ansible-role-wordpress }
