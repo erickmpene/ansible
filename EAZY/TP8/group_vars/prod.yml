@@ -1,7 +1,6 @@
 ---
 
-ansible_user: cool
-ansible_ssh_private_key_file: '/home/{{ ansible_user }}/key/jenkins.priv'
+ansible_user: MyUser
 ansible_python_interpreter: "/usr/bin/python3"
 container_image: httpd
 container_name: webapp
