@@ -1,3 +1,2 @@
 # Install a role for wordpress 
-#- src: https://github.com/diranetafen/ansible-role-containerized-wordpress.git
 - src: https://github.com/erickmpene/ansible-role-wordpress.git
