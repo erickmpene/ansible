@@ -7,8 +7,9 @@ cd ~/.awx/awxcompose
 docker compose  up -d
 ``` 
 ### 2. Default login credentials
-login : admin
-password : password
+> login : admin
+
+> password : password
 
 ### Enjoy ! d('-')b
 
