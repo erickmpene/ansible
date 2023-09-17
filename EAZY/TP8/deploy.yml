@@ -16,7 +16,7 @@
 
     - name: Add user cool to docker group
       user:
-        name: cool
+        name: "{{ ansible_user }}"
         groups: docker
         append: yes
 
@@ -26,16 +26,3 @@
         state: started
         enabled: yes
 
-    - name: Copy website file template
-      template:
-        src: index.html.j2
-        dest: "{{ src_folder_local_host }}"
-
-    - name: Create Apache container
-      docker_container:
-        name: "{{ container_name }}"
-        image: "{{ container_image }}"
-        ports:
-          - "{{ container_port_exposed }}"
-        volumes:
-          - /home/cool/index.html:/usr/local/apache2/htdocs/index.html
